@@ -13,6 +13,7 @@ export type ServiceDocument = Document & {
   description: string;
   price: number;
   category: string;
+  subcategory: string;
   status: ServiceStatus;
   deliveryTime: number;
   revisions: number;
@@ -42,6 +43,10 @@ const ServiceSchema = new Schema(
     category: {
       type: String,
       required: true,
+    },
+    subcategory: {
+      type: String,
+      required: false,
     },
     status: {
       type: String,

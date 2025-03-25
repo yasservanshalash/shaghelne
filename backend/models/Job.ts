@@ -27,6 +27,7 @@ export type JobDocument = Document & {
     specificArea: string;
   };
   category: string;
+  subcategory: string;
   requirements: string[];
   company: {
     name: string;
@@ -64,6 +65,10 @@ const JobSchema = new Schema(
     category: {
       type: String,
       required: true,
+    },
+    subcategory: {
+      type: String,
+      required: false,
     },
     requirements: {
       type: [String],

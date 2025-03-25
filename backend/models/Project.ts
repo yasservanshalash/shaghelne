@@ -16,6 +16,7 @@ export type ProjectDocument = Document & {
   deadline: Date;
   status: ProjectStatus;
   category: string;
+  subcategory: string;
   skills: string[];
   attachments: string[];
   userId: string;
@@ -49,6 +50,10 @@ const ProjectSchema = new Schema(
     category: {
       type: String,
       required: true,
+    },
+    subcategory: {
+      type: String,
+      required: false,
     },
     skills: {
       type: [String],
