@@ -39,6 +39,10 @@ const ProjectSchema = new Schema({
         type: String,
         required: true,
     },
+    subcategory: {
+        type: String,
+        required: false,
+    },
     skills: {
         type: [String],
         default: [],

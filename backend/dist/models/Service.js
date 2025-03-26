@@ -29,6 +29,10 @@ const ServiceSchema = new Schema({
         type: String,
         required: true,
     },
+    subcategory: {
+        type: String,
+        required: false,
+    },
     status: {
         type: String,
         enum: Object.values(ServiceStatus),

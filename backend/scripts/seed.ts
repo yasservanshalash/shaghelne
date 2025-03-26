@@ -8,6 +8,10 @@ import Project from '../models/Project';
 import Review from '../models/Review';
 import JobApplication from '../models/JobApplication';
 import Proposal from '../models/Proposal';
+import Category from '../models/Category';
+import Message from '../models/Message';
+import Payment, { PaymentStatus, PaymentType } from '../models/Payment';
+import Notification, { NotificationType } from '../models/Notification';
 
 // Load environment variables
 dotenv.config();
@@ -391,6 +395,10 @@ async function seedDatabase() {
     await Review.deleteMany({});
     await JobApplication.deleteMany({});
     await Proposal.deleteMany({});
+    await Category.deleteMany({});
+    await Message.deleteMany({});
+    await Payment.deleteMany({});
+    await Notification.deleteMany({});
     
     console.log('Cleared existing data');
 
@@ -418,6 +426,20 @@ async function seedDatabase() {
     if (!employerUser || !freelancer1 || !freelancer2) {
       throw new Error('Failed to find required users. Make sure user data is correct.');
     }
+
+    // Create categories from the category structure
+    const categories = [];
+    for (const [name, data] of Object.entries(categoryStructure)) {
+      categories.push({
+        name,
+        description: data.description,
+        subcategories: data.subcategories,
+        icon: `https://via.placeholder.com/64?text=${encodeURIComponent(name.slice(0, 1))}`
+      });
+    }
+
+    const createdCategories = await Category.insertMany(categories);
+    console.log(`Created ${createdCategories.length} categories`);
 
     // Create services
     const services = [
@@ -726,6 +748,110 @@ async function seedDatabase() {
 
     const createdProposals = await Proposal.insertMany(proposals);
     console.log(`Created ${createdProposals.length} proposals`);
+
+    // Create sample messages between users
+    const messages = [
+      {
+        content: 'Hi, I\'m interested in your web development services. Can we discuss details?',
+        senderId: employerUser._id,
+        receiverId: freelancer1._id,
+        read: false
+      },
+      {
+        content: 'Sure, I\'d be happy to discuss your project needs. What kind of website are you looking to build?',
+        senderId: freelancer1._id,
+        receiverId: employerUser._id,
+        read: true
+      },
+      {
+        content: 'Hello, I saw your design portfolio and I\'m impressed. Are you available for a logo design project?',
+        senderId: employerUser._id,
+        receiverId: freelancer2._id,
+        read: false
+      },
+      {
+        content: 'Thank you for your interest. Yes, I\'m currently taking new logo design projects.',
+        senderId: freelancer2._id,
+        receiverId: employerUser._id,
+        read: true
+      }
+    ];
+
+    const createdMessages = await Message.insertMany(messages);
+    console.log(`Created ${createdMessages.length} messages`);
+
+    // Create sample payments
+    const payments = [
+      {
+        amount: 500,
+        userId: employerUser._id,
+        status: PaymentStatus.COMPLETED,
+        type: PaymentType.PAYMENT,
+        description: 'Payment for Web Development Service',
+        transactionId: 'txn_' + Math.random().toString(36).substring(2, 15),
+        serviceId: createdServices[0]._id,
+        paymentMethod: 'Credit Card'
+      },
+      {
+        amount: 350,
+        userId: employerUser._id,
+        status: PaymentStatus.COMPLETED,
+        type: PaymentType.PAYMENT,
+        description: 'Payment for UI Design Service',
+        transactionId: 'txn_' + Math.random().toString(36).substring(2, 15),
+        serviceId: createdServices[1]._id,
+        paymentMethod: 'PayPal'
+      },
+      {
+        amount: 450,
+        userId: freelancer1._id,
+        status: PaymentStatus.PENDING,
+        type: PaymentType.WITHDRAWAL,
+        description: 'Withdrawal to bank account',
+        paymentMethod: 'Bank Transfer'
+      }
+    ];
+
+    const createdPayments = await Payment.insertMany(payments);
+    console.log(`Created ${createdPayments.length} payments`);
+
+    // Create sample notifications
+    const notifications = [
+      {
+        userId: employerUser._id,
+        title: 'New Proposal Received',
+        message: 'You have received a new proposal for your project "Website Redesign for Marketing Agency"',
+        type: NotificationType.PROJECT,
+        read: false,
+        relatedId: createdProjects[0]._id
+      },
+      {
+        userId: freelancer1._id,
+        title: 'Payment Received',
+        message: 'You have received a payment of $500 for your Web Development Service',
+        type: NotificationType.PAYMENT,
+        read: false,
+        relatedId: createdPayments[0]._id
+      },
+      {
+        userId: freelancer2._id,
+        title: 'New Message',
+        message: 'You have a new message from an employer',
+        type: NotificationType.MESSAGE,
+        read: false,
+        relatedId: createdMessages[2]._id
+      },
+      {
+        userId: adminUser._id,
+        title: 'System Update',
+        message: 'The platform has been updated with new features',
+        type: NotificationType.SYSTEM,
+        read: true
+      }
+    ];
+
+    const createdNotifications = await Notification.insertMany(notifications);
+    console.log(`Created ${createdNotifications.length} notifications`);
 
     console.log('Database seeded successfully!');
     console.log('================================================================');

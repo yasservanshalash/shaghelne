@@ -35,7 +35,7 @@ app.use(express_1.default.json());
 // Connect to MongoDB
 const connectDB = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        yield mongoose_1.default.connect(process.env.MONGODB_URI);
+        yield mongoose_1.default.connect(process.env.MONGODB_URL);
         console.log("MongoDB connected");
     }
     catch (err) {
@@ -58,7 +58,7 @@ app.use((err, req, res, next) => {
     console.error(err.stack);
     res.status(500).json({ message: "Something went wrong!" });
 });
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5001;
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });

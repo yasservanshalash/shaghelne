@@ -14,6 +14,10 @@ import jobApplicationRoutes from "./routes/jobApplications";
 import projectRoutes from "./routes/projects";
 import proposalRoutes from "./routes/proposals";
 import reviewRoutes from "./routes/reviews";
+import messageRoutes from "./routes/messages";
+import paymentRoutes from "./routes/payments";
+import notificationRoutes from "./routes/notifications";
+import categoryRoutes from "./routes/categories";
 
 dotenv.config();
 
@@ -45,6 +49,10 @@ app.use("/api/job-applications", jobApplicationRoutes);
 app.use("/api/projects", projectRoutes);
 app.use("/api/proposals", proposalRoutes);
 app.use("/api/reviews", reviewRoutes);
+app.use("/api/messages", messageRoutes);
+app.use("/api/payments", paymentRoutes);
+app.use("/api/notifications", notificationRoutes);
+app.use("/api/categories", categoryRoutes);
 
 // Error handler
 app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {

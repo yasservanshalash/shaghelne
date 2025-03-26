@@ -59,6 +59,211 @@ const Proposal_1 = __importDefault(require("../models/Proposal"));
 dotenv_1.default.config();
 // The default password for all seeded users
 const DEFAULT_PASSWORD = 'password123';
+// Category structure with main categories and subcategories
+const categoryStructure = {
+    'Development & IT': {
+        description: 'Software Engineer, Web / Mobile Developer & More',
+        subcategories: [
+            'Web Development',
+            'Mobile App Development',
+            'Game Development',
+            'Software Development',
+            'Desktop Applications',
+            'Blockchain & Cryptocurrency',
+            'AI & Machine Learning',
+            'DevOps & Cloud',
+            'QA & Testing',
+            'Cybersecurity',
+            'Database Administration'
+        ]
+    },
+    'Design & Creative': {
+        description: 'Creative Designer, Animator, UI/UX Designer & More',
+        subcategories: [
+            'Web & App Design',
+            'Website Design',
+            'App Design',
+            'UX Design',
+            'Landing Page Design',
+            'Icon Design',
+            'Marketing Design',
+            'Social Media Design',
+            'Email Design',
+            'Web Banners',
+            'Signage Design',
+            'Art & Illustration',
+            'Illustration',
+            'NFT Art',
+            'Pattern Design',
+            'Portraits & Caricatures',
+            'Cartoons & Comics',
+            'Tattoo Design',
+            'Storyboards',
+            'Visual Design',
+            'Image Editing',
+            'Presentation Design',
+            'Infographic Design',
+            'Vector Tracing',
+            'Resume Design',
+            'Print Design',
+            'T-Shirts & Merchandise',
+            'Flyer Design',
+            'Brochure Design',
+            'Poster Design',
+            'Catalog Design'
+        ]
+    },
+    'Digital Marketing': {
+        description: 'Digital Marketer, SEO Expert, Content Writer & More',
+        subcategories: [
+            'Search Engine Optimization (SEO)',
+            'Social Media Marketing',
+            'Content Marketing',
+            'Email Marketing',
+            'PPC Advertising',
+            'SEM',
+            'Influencer Marketing',
+            'Affiliate Marketing',
+            'Marketing Strategy',
+            'Public Relations',
+            'Lead Generation',
+            'Analytics & Reporting'
+        ]
+    },
+    'Writing & Translation': {
+        description: 'Copywriter, Content Writer, Translator & More',
+        subcategories: [
+            'Content Writing',
+            'Copywriting',
+            'Technical Writing',
+            'Translation',
+            'Proofreading & Editing',
+            'Creative Writing',
+            'Resume & Cover Letters',
+            'Research & Summaries',
+            'Transcription',
+            'Legal Writing',
+            'Grant Writing',
+            'Scriptwriting'
+        ]
+    },
+    'Music & Audio': {
+        description: 'Voice Actor, Music Producer, Singer & More',
+        subcategories: [
+            'Voice Over',
+            'Music Production',
+            'Singers & Vocalists',
+            'Mixing & Mastering',
+            'Session Musicians',
+            'Songwriters',
+            'Podcast Production',
+            'Sound Design',
+            'Audiobook Production',
+            'Audio Editing',
+            'Jingles & Intros'
+        ]
+    },
+    'Video & Animation': {
+        description: 'Video Editor, Animator, Videographer & More',
+        subcategories: [
+            'Video Editing',
+            'Animation',
+            'Motion Graphics',
+            'Video Production',
+            '3D Animation',
+            '2D Animation',
+            'Whiteboard Animation',
+            'Explainer Videos',
+            'Short Video Ads',
+            'Character Animation',
+            'Visual Effects',
+            'Gaming',
+            'Game Art',
+            'Graphics for Streamers',
+            'Twitch Store'
+        ]
+    },
+    'Engineering & Architecture': {
+        description: 'Engineer, Architect, Interior Designer & More',
+        subcategories: [
+            'CAD & 3D Modeling',
+            'Architecture Design',
+            'Interior Design',
+            'Civil Engineering',
+            'Electrical Engineering',
+            'Mechanical Engineering',
+            'Product Design',
+            'HVAC Design',
+            'Structural Engineering',
+            'Floor Plans',
+            '3D Rendering'
+        ]
+    },
+    'Finance & Accounting': {
+        description: 'Accountant, Financial Analyst, Tax Consultant & More',
+        subcategories: [
+            'Accounting',
+            'Bookkeeping',
+            'Tax Preparation',
+            'Financial Analysis',
+            'Financial Planning',
+            'Financial Modeling',
+            'Budgeting',
+            'Business Planning',
+            'Investment Analysis',
+            'Payroll Processing',
+            'QuickBooks & Accounting Software'
+        ]
+    }
+};
+// Get all categories (flat list for simple reference)
+const allCategories = Object.keys(categoryStructure);
+// Get all subcategories (flat list)
+const allSubcategories = Object.values(categoryStructure).flatMap(category => category.subcategories);
+// Skills for various categories
+const skills = {
+    'Development & IT': [
+        'JavaScript', 'Python', 'React', 'Node.js', 'Angular', 'Vue.js', 'PHP',
+        'WordPress', 'TypeScript', 'MongoDB', 'SQL', 'Django', 'Ruby on Rails',
+        'Java', 'C#', '.NET', 'Swift', 'Kotlin', 'Flutter', 'React Native',
+        'AWS', 'Azure', 'Docker', 'Kubernetes', 'DevOps', 'API Development'
+    ],
+    'Design & Creative': [
+        'Photoshop', 'Illustrator', 'Figma', 'Sketch', 'InDesign', 'UI Design',
+        'UX Design', 'Logo Design', 'Branding', 'Illustration', 'Web Design',
+        'Mobile App Design', 'Graphic Design', '3D Modeling', 'Animation'
+    ],
+    'Digital Marketing': [
+        'SEO', 'SEM', 'Social Media Marketing', 'Content Marketing', 'Email Marketing',
+        'PPC', 'Google Ads', 'Facebook Ads', 'Instagram Marketing', 'TikTok Marketing',
+        'Marketing Strategy', 'Analytics', 'Influencer Marketing', 'Growth Hacking'
+    ],
+    'Writing & Translation': [
+        'Content Writing', 'Copywriting', 'Technical Writing', 'Translation',
+        'Editing', 'Proofreading', 'Blog Writing', 'Article Writing', 'Resume Writing',
+        'Creative Writing', 'Business Writing', 'Ghostwriting', 'Transcription'
+    ],
+    'Music & Audio': [
+        'Voice Over', 'Music Production', 'Audio Editing', 'Sound Design',
+        'Mixing & Mastering', 'Podcast Production', 'Jingle & Intro', 'Singing',
+        'Songwriting', 'Beat Making', 'Audio Engineering'
+    ],
+    'Video & Animation': [
+        'Video Editing', 'Animation', 'Motion Graphics', 'Video Production',
+        '3D Animation', '2D Animation', 'Whiteboard Animation', 'Explainer Videos',
+        'Short Video Ads', 'Character Animation', 'Visual Effects'
+    ],
+    'Engineering & Architecture': [
+        'CAD', 'AutoCAD', 'Civil Engineering', 'Electrical Engineering', 'Mechanical Engineering',
+        'Architectural Design', 'Interior Design', '3D Rendering', 'Structural Engineering',
+        'Product Design', 'Floor Plans', 'HVAC Design'
+    ],
+    'Finance & Accounting': [
+        'Accounting', 'Bookkeeping', 'Financial Analysis', 'Tax Preparation',
+        'Financial Modeling', 'Business Planning', 'Budgeting', 'QuickBooks',
+        'Xero', 'Payroll', 'Cost Accounting', 'Investment Analysis'
+    ]
+};
 // Sample data for users
 const users = [
     {
@@ -248,7 +453,8 @@ function seedDatabase() {
                     title: 'Professional Web Development',
                     description: 'I will create a modern, responsive website for your business or personal needs.',
                     price: 500,
-                    category: 'Web Development',
+                    category: 'Development & IT',
+                    subcategory: 'Web Development',
                     status: Service_1.ServiceStatus.ACTIVE,
                     deliveryTime: 7, // days
                     revisions: 3,
@@ -261,7 +467,8 @@ function seedDatabase() {
                     title: 'Mobile App UI Design',
                     description: 'I will design a beautiful and intuitive UI for your mobile application.',
                     price: 350,
-                    category: 'UI/UX Design',
+                    category: 'Design & Creative',
+                    subcategory: 'App Design',
                     status: Service_1.ServiceStatus.ACTIVE,
                     deliveryTime: 5, // days
                     revisions: 2,
@@ -274,12 +481,41 @@ function seedDatabase() {
                     title: 'React Native Development',
                     description: 'I will develop a cross-platform mobile app using React Native.',
                     price: 800,
-                    category: 'Mobile Development',
+                    category: 'Development & IT',
+                    subcategory: 'Mobile App Development',
                     status: Service_1.ServiceStatus.ACTIVE,
                     deliveryTime: 14, // days
                     revisions: 3,
                     features: ['iOS & Android', 'API Integration', 'User Authentication', 'Push Notifications'],
                     requirements: 'Please provide your app requirements and API documentation if available.',
+                    images: ['https://via.placeholder.com/600x400'],
+                    userId: freelancer1._id
+                },
+                {
+                    title: 'Logo and Brand Identity',
+                    description: 'I will design a professional logo and complete brand identity for your business.',
+                    price: 450,
+                    category: 'Design & Creative',
+                    subcategory: 'Marketing Design',
+                    status: Service_1.ServiceStatus.ACTIVE,
+                    deliveryTime: 6, // days
+                    revisions: 4,
+                    features: ['Logo Design', 'Brand Guidelines', 'Business Card Design', 'Letterhead Design'],
+                    requirements: 'Please provide information about your business and any color preferences.',
+                    images: ['https://via.placeholder.com/600x400'],
+                    userId: freelancer2._id
+                },
+                {
+                    title: 'SEO Optimization Service',
+                    description: 'I will optimize your website for search engines to improve your rankings.',
+                    price: 300,
+                    category: 'Digital Marketing',
+                    subcategory: 'Search Engine Optimization (SEO)',
+                    status: Service_1.ServiceStatus.ACTIVE,
+                    deliveryTime: 10, // days
+                    revisions: 2,
+                    features: ['Keyword Research', 'On-Page SEO', 'Technical SEO Audit', 'Backlink Strategy'],
+                    requirements: 'Please provide access to your website and target keywords if available.',
                     images: ['https://via.placeholder.com/600x400'],
                     userId: freelancer1._id
                 }
@@ -301,7 +537,8 @@ function seedDatabase() {
                         industry: 'Technology'
                     },
                     deadline: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000), // 30 days from now
-                    category: 'Web Development',
+                    category: 'Development & IT',
+                    subcategory: 'Web Development',
                     skills: ['React', 'Redux', 'HTML/CSS', 'JavaScript'],
                     status: 'OPEN',
                     location: {
@@ -324,8 +561,57 @@ function seedDatabase() {
                         industry: 'Technology'
                     },
                     deadline: new Date(Date.now() + 15 * 24 * 60 * 60 * 1000), // 15 days from now
-                    category: 'Graphic Design',
+                    category: 'Design & Creative',
+                    subcategory: 'Marketing Design',
                     skills: ['Logo Design', 'Brand Identity', 'Illustrator', 'Photoshop'],
+                    status: 'OPEN',
+                    location: {
+                        city: 'Remote',
+                        subCity: '',
+                        specificArea: ''
+                    },
+                    userId: employerUser._id
+                },
+                {
+                    title: 'Content Writer for Tech Blog',
+                    description: 'We need a skilled content writer to create articles for our technology blog.',
+                    requirements: ['Experience writing tech content', 'SEO knowledge', 'Strong research skills'],
+                    budget: 1000,
+                    salary: 1500,
+                    jobType: 'FREELANCE',
+                    company: {
+                        name: 'Tech Media Group',
+                        size: '10-50',
+                        industry: 'Media'
+                    },
+                    deadline: new Date(Date.now() + 20 * 24 * 60 * 60 * 1000), // 20 days from now
+                    category: 'Writing & Translation',
+                    subcategory: 'Content Writing',
+                    skills: ['Content Writing', 'SEO', 'Technical Writing', 'Blogging'],
+                    status: 'OPEN',
+                    location: {
+                        city: 'Remote',
+                        subCity: '',
+                        specificArea: ''
+                    },
+                    userId: employerUser._id
+                },
+                {
+                    title: 'Video Editor for Marketing Campaign',
+                    description: 'Seeking a video editor to create promotional videos for our upcoming marketing campaign.',
+                    requirements: ['Experience with Adobe Premiere Pro', 'Motion graphics skills', 'Creative storytelling'],
+                    budget: 2500,
+                    salary: 3000,
+                    jobType: 'FREELANCE',
+                    company: {
+                        name: 'Global Marketing Agency',
+                        size: '50-200',
+                        industry: 'Marketing'
+                    },
+                    deadline: new Date(Date.now() + 25 * 24 * 60 * 60 * 1000), // 25 days from now
+                    category: 'Video & Animation',
+                    subcategory: 'Video Editing',
+                    skills: ['Video Editing', 'Motion Graphics', 'Adobe Premiere', 'After Effects'],
                     status: 'OPEN',
                     location: {
                         city: 'Remote',
@@ -337,7 +623,7 @@ function seedDatabase() {
             ];
             const createdJobs = yield Job_1.default.insertMany(jobs);
             console.log(`Created ${createdJobs.length} jobs`);
-            // Create projects
+            // Create projects with the new categories
             const projects = [
                 {
                     title: 'Website Redesign for Marketing Agency',
@@ -345,7 +631,8 @@ function seedDatabase() {
                     requirements: 'Looking for modern design with a focus on portfolio showcase and lead generation.',
                     budget: 5000,
                     deadline: new Date(Date.now() + 45 * 24 * 60 * 60 * 1000), // 45 days from now
-                    category: 'Web Design',
+                    category: 'Design & Creative',
+                    subcategory: 'Website Design',
                     skills: ['Web Design', 'UI/UX', 'WordPress', 'SEO'],
                     status: 'OPEN',
                     location: 'Remote',
@@ -357,8 +644,35 @@ function seedDatabase() {
                     requirements: 'Experience with fitness apps or health tracking features is a plus.',
                     budget: 8000,
                     deadline: new Date(Date.now() + 60 * 24 * 60 * 60 * 1000), // 60 days from now
-                    category: 'Mobile Development',
+                    category: 'Development & IT',
+                    subcategory: 'Mobile App Development',
                     skills: ['React Native', 'iOS', 'Android', 'API Development'],
+                    status: 'OPEN',
+                    location: 'Remote',
+                    userId: employerUser._id
+                },
+                {
+                    title: 'Social Media Marketing Campaign',
+                    description: 'We need a comprehensive social media marketing campaign for our new product launch.',
+                    requirements: 'Experience with Facebook, Instagram, and TikTok advertising required.',
+                    budget: 3500,
+                    deadline: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000), // 30 days from now
+                    category: 'Digital Marketing',
+                    subcategory: 'Social Media Marketing',
+                    skills: ['Social Media Marketing', 'Content Creation', 'Ad Campaign Management', 'Analytics'],
+                    status: 'OPEN',
+                    location: 'Remote',
+                    userId: employerUser._id
+                },
+                {
+                    title: 'Corporate Training Video Production',
+                    description: 'We need a series of professional training videos for our corporate onboarding process.',
+                    requirements: 'Must have experience with instructional design and corporate video production.',
+                    budget: 6000,
+                    deadline: new Date(Date.now() + 50 * 24 * 60 * 60 * 1000), // 50 days from now
+                    category: 'Video & Animation',
+                    subcategory: 'Video Production',
+                    skills: ['Video Production', 'Screenwriting', 'Animation', 'Voice Over'],
                     status: 'OPEN',
                     location: 'Remote',
                     userId: employerUser._id
