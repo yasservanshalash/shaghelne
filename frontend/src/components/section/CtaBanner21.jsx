@@ -3,41 +3,41 @@ import React from "react";
 
 export default function CtaBanner21() {
   return (
-    <section className="home11-cta-3 at-home20 bdrs24 maxw1700 mx-auto">
-      <div className="container">
-        <div className="row align-items-center justify-content-between">
-          <div className="col-md-6 col-lg-8 wow fadeInRight">
-            <div className="cta-style3">
-              <h2 className="cta-title text-white">
+    <section className="max-w-[1700px] mx-auto rounded-3xl bg-gradient-to-r from-blue-600 to-indigo-700">
+      <div className="container mx-auto px-4 py-16">
+        <div className="flex flex-wrap items-center justify-between">
+          <div className="w-full md:w-6/12 lg:w-8/12 animate-fadeInRight">
+            <div className="text-white mb-8 md:mb-0">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">
                 With talented freelancers do{" "}
-                <br className="d-none d-xl-block" /> more work.
+                <br className="hidden xl:block" /> more work.
               </h2>
-              <p className="cta-text text-white">
+              <p className="mb-8">
                 Work with the largest network of independent professionals and{" "}
-                <br className="d-none d-lg-block" /> get things done—from quick
+                <br className="hidden lg:block" /> get things done—from quick
                 turnarounds.
               </p>
-              <Link to="/job-1" className="ud-btn btn-white bdrs16 mr20">
-                Find Work <i className="fal fa-arrow-right-long"></i>
+              <Link to="/job-1" className="inline-block px-6 py-3 bg-white text-gray-900 rounded-2xl mr-5 hover:bg-gray-100 transition-colors">
+                Find Work <i className="fal fa-arrow-right-long ml-2"></i>
               </Link>
               <Link
                 to="/freelancer-1"
-                className="ud-btn btn-transparent2 bdrs16"
+                className="inline-block px-6 py-3 border border-white text-white rounded-2xl hover:bg-white hover:text-gray-900 transition-colors"
               >
-                Find Talent <i className="fal fa-arrow-right-long"></i>
+                Find Talent <i className="fal fa-arrow-right-long ml-2"></i>
               </Link>
             </div>
           </div>
-          <div className="col-md-6 col-lg-4 wow fadeIn">
+          <div className="w-full md:w-6/12 lg:w-4/12 animate-fadeIn">
             <img
-              className="home11-ctaimg-v3 at-home15 d-none d-md-block"
+              className="hidden md:block mx-auto"
               src="/images/about/about-16.png"
-              alt=" image "
+              alt="Freelancer illustration"
             />
             <img
-              className="home15-ctaimg-v2 at-home20 d-none d-md-block"
+              className="hidden md:block absolute -bottom-10 right-10 max-w-xs"
               src="/images/about/element-12.png"
-              alt=" image "
+              alt="Decorative element"
             />
           </div>
         </div>
