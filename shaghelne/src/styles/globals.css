@@ -1,0 +1,80 @@
+/* Global CSS for handling broken images */
+
+img {
+  /* Add a min-height and min-width to avoid layout shifts */
+  min-height: 20px;
+  min-width: 20px;
+  
+  /* Add a fallback background color */
+  background-color: #f5f5f5;
+}
+
+/* Apply custom styling for broken images */
+img.error {
+  position: relative;
+  display: inline-block;
+}
+
+img.error::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 4px;
+}
+
+img.error::after {
+  content: "🖼️ Image not available";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  transform: translateY(-50%);
+  font-size: 14px;
+  font-weight: normal;
+  text-align: center;
+  color: #6c757d;
+}
+
+/* Custom class for broken author images */
+img.author-img-error::after {
+  content: "👤";
+  font-size: 18px;
+}
+
+/* Add overlay for loading images */
+.image-loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  font-size: 14px;
+  color: #555;
+}
+
+/* Add custom class for service images to ensure correct dimensions */
+.service-img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  min-height: 200px;
+  background-color: #f5f5f5;
+}
+
+/* Ensure rounded author images maintain consistency */
+img.rounded-circle {
+  min-height: 40px;
+  min-width: 40px;
+  object-fit: cover;
+  background-color: #e9ecef;
+} 
