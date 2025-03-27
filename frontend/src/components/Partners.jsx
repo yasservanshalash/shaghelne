@@ -3,7 +3,7 @@ import React from "react";
 
 export default function OurPartners() {
   return (
-    <section className="py-16 px-4 mt-[-60px] max-w-7xl mx-auto rounded-3xl mb-24 hover:bg-gray-50 transition-colors">
+    <section className="py-16 px-4 max-w-7xl mx-auto rounded-3xl mb-2 mt-4 hover:bg-gray-50 transition-colors">
       <div className="container mx-auto">
         <div className="mb-10">
           <div className="text-center">

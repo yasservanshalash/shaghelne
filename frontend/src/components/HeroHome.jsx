@@ -11,7 +11,7 @@ const HeroHome = () => {
           <svg 
             xmlns="http://www.w3.org/2000/svg" 
             viewBox="0 0 480 360" 
-            className="w-[80%] max-w-4xl transform scale-[1.5]"
+            className="w-[80%] max-w-4xl transform scale-[1.25]"
           >
             <path 
               fill="#22c55e" 
@@ -24,7 +24,7 @@ const HeroHome = () => {
         </div>
 
         {/* Left side decorative images */}
-        <div className="absolute left-0 top-0 h-full w-full hidden lg:block pointer-events-none mx-[300px]">
+        <div className="absolute left-0 top-0 h-full w-full hidden lg:block pointer-events-none mx-[200px]">
           <img
             src="/images/about/home20-hero-1.png"
             alt="decorative"
@@ -51,7 +51,7 @@ const HeroHome = () => {
         </div>
 
         {/* Right side decorative images */}
-        <div className="absolute right-0 top-0 h-full w-1/4 hidden lg:block pointer-events-none mx-[300px]">
+        <div className="absolute right-0 top-0 h-full w-1/4 hidden lg:block pointer-events-none mx-[200px]">
           <img
             src="/images/about/home20-hero-5.png"
             alt="decorative"
