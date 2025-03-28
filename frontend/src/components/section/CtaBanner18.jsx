@@ -1,10 +1,12 @@
 import { featuresTwo, frelancersFeatures } from "../../data/features";
 import React from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheck } from '@fortawesome/free-solid-svg-icons';
 
 export default function CtaBanner18() {
   return (
-    <section className="relative mx-auto max-w-[1700px] py-16 lg:py-20" dir="rtl">
-      <div className="container mx-auto px-4">
+    <section className="relative mx-auto max-w-[1700px] py-16 lg:py-20 flex" dir="rtl">
+      <div className="container mx-auto p-10 bg-green-200 flex rounded-2xl">
         <div
           className="flex flex-wrap items-center animate-fadeInDown"
           data-wow-delay="400ms"
@@ -45,23 +47,18 @@ export default function CtaBanner18() {
               ))}
             </div>
           </div>
-          <div className="w-full lg:w-5/12 xl:w-4/12 animate-fadeInRight">
+          <div className="w-full lg:w-5/12 xl:w-4/12 animate-fadeInRight z-10 relative right-[100px]">
             <div className="bg-gray-900 text-white rounded-2xl p-8 px-8 relative">
               <div>
                 <ul className="mb-0 text-right">
                   {featuresTwo.map((elm, i) => (
-                    <li key={i} className="text-white font-medium flex flex-row-reverse items-center mb-3">
-                      <i className="far fa-check bg-white text-gray-900 p-1 rounded-full ml-3"></i>
-                      {elm === "The best for every budget" ? "الأفضل لكل ميزانية" :
-                       elm === "Quality work done quickly" ? "عمل عالي الجودة ينجز بسرعة" :
-                       elm === "Protected payments, every time" ? "مدفوعات محمية في كل مرة" :
-                       elm === "24/7 support" ? "دعم على مدار الساعة" :
-                       elm === "Connect to freelancers with proven business experience" ? "تواصل مع مستقلين ذوي خبرة مثبتة في مجال الأعمال" :
-                       elm === "Get matched with the perfect talent by a customer success manager" ? "احصل على تطابق مع الموهبة المثالية من قبل مدير نجاح العملاء" :
-                       elm === "Manage teamwork and boost productivity with one powerful workspace" ? "إدارة العمل الجماعي وتعزيز الإنتاجية من خلال مساحة عمل واحدة قوية" :
-                       elm === "A business model proven" ? "نموذج أعمال مثبت" :
-                       elm === "XML, HTML, PDFs" ? "XML، HTML، ملفات PDF" :
-                       elm}
+                    <li key={i} className="text-white font-medium flex items-center justify-between mb-3 flex gap-2">
+                      <FontAwesomeIcon 
+                        icon={faCheck} 
+                        className="bg-white text-gray-900 p-1 rounded-full" 
+                        size="sm" 
+                      />
+                      <span className="flex-grow ml-3 text-right">{elm}</span>
                     </li>
                   ))}
                 </ul>
@@ -71,7 +68,7 @@ export default function CtaBanner18() {
         </div>
       </div>
       <img
-        className="rounded-3xl w-full mt-8"
+        className="rounded-3xl mt-8 relative left-[250px] bottom-[20px]"
         src="/images/about/about-19.jpg"
         alt="عرض المواهب المستقلة"
       />

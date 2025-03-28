@@ -1,29 +1,27 @@
 export const about = [
-  { id: 1, name: "Careers", path: "/" },
-  { id: 2, name: "Press & News", path: "/" },
-  { id: 3, name: "Partnerships", path: "/" },
-  { id: 4, name: "Privacy Policy", path: "/" },
-  { id: 5, name: "Terms of Service", path: "/" },
-  { id: 6, name: "Investor Relations", path: "/" },
+  { id: 1, name: "وظائف", path: "/" },
+  { id: 2, name: "الصحافة والأخبار", path: "/" },
+  { id: 3, name: "شراكات", path: "/" },
+  { id: 6, name: "علاقات المستثمرين", path: "/" },
 ];
 
 export const category = [
-  { id: 1, name: "Graphics & Design", path: "/" },
-  { id: 2, name: "Digital Marketing", path: "/" },
-  { id: 3, name: "Writing & Translation", path: "/" },
-  { id: 4, name: "Video & Animation", path: "/" },
-  { id: 5, name: "Music & Audio", path: "/" },
-  { id: 6, name: "Programming & Tech", path: "/" },
-  { id: 7, name: "Data", path: "/" },
-  { id: 8, name: "Business", path: "/" },
-  { id: 9, name: "Lifestyle", path: "/" },
+  { id: 1, name: "التصميم والجرافيك", path: "/" },
+  { id: 2, name: "التسويق الرقمي", path: "/" },
+  { id: 3, name: "الكتابة والترجمة", path: "/" },
+  { id: 4, name: "الفيديو والرسوم المتحركة", path: "/" },
+  { id: 5, name: "الموسيقى والصوتيات", path: "/" },
+  { id: 6, name: "البرمجة والتقنية", path: "/" },
+  { id: 7, name: "البيانات", path: "/" },
+  { id: 8, name: "الأعمال", path: "/" },
+  { id: 9, name: "نمط الحياة", path: "/" },
 ];
 
 export const support = [
-  { id: 1, name: "Help & Support", path: "/" },
-  { id: 2, name: "Trust & Safety", path: "/" },
-  { id: 3, name: "Selling on Freeio", path: "/" },
-  { id: 4, name: "Buying on Freeio", path: "/" },
+  { id: 1, name: "المساعدة والدعم", path: "/" },
+  { id: 2, name: "الثقة والأمان", path: "/" },
+  { id: 3, name: "البيع على شغلني", path: "/" },
+  { id: 4, name: "الشراء على شغلني", path: "/" },
 ];
 
 export const momney = ["US$ USD", "Euro", "Pound"];

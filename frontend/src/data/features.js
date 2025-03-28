@@ -2,35 +2,36 @@ export const frelancersFeatures = [
   {
     id: 1,
     iconClass: "flaticon-badge",
-    title: "Proof of quality",
+    title: "دليل على الجودة",
     content:
-      "Check any pro’s work samples, client reviews, and identity verification.",
+      "تحقق من نماذج أعمال المحترفين ومراجعات العملاء والتحقق من الهوية.",
   },
   {
     id: 2,
     iconClass: "flaticon-money",
-    title: "No cost until you hire",
+    title: "لا تكلفة حتى توظف",
     content:
-      "Interview potential fits for your job, negotiate rates, and only pay for work you approve.",
+      "قابل المرشحين المناسبين لوظيفتك، وتفاوض على الأسعار، وادفع فقط مقابل العمل الذي توافق عليه.",
   },
   {
     id: 3,
     iconClass: "flaticon-security",
-    title: "Safe and secure",
+    title: "آمن ومضمون",
     content:
-      "Focus on your work knowing we help protect your data and privacy. We’re here with 24/7 support if you need it.",
+      "ركز على عملك ونحن نساعد في حماية بياناتك وخصوصيتك. فريقنا متاح للدعم على مدار الساعة طوال أيام الأسبوع عند الحاجة.",
   },
 ];
 
 export const featuresTwo = [
-  "The best for every budget",
-  "Quality work done quickly",
-  "Protected payments, every time",
-  "24/7 support",
+  "الأفضل لكل ميزانية",
+  "عمل عالي الجودة ينجز بسرعة",
+  "مدفوعات محمية في كل مرة",
+  "دعم على مدار الساعة",
 ];
+
 export const features = [
-  { id: 1, value: 834, label: "Total Freelancer" },
-  { id: 2, value: 732, label: "Positive Review" },
-  { id: 3, value: 90, label: "Order received" },
-  { id: 4, value: 236, label: "Projects Completed" },
+  { id: 1, value: 834, label: "إجمالي المستقلين" },
+  { id: 2, value: 732, label: "تقييم إيجابي" },
+  { id: 3, value: 90, label: "طلبات مستلمة" },
+  { id: 4, value: 236, label: "مشاريع مكتملة" },
 ];

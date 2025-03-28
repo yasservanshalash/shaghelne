@@ -5,7 +5,7 @@ export default function AllTimeSelling() {
   return (
     <>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 transform transition-transform duration-500 animate-fadeIn" style={{ direction: 'rtl' }}>
-        <div className="bg-white p-6 rounded-lg shadow-sm">
+        <div className="bg-white p-6 rounded-lg">
           <div className="flex flex-col">
             <div className="mb-4 text-green-400 ml-4">
               <FontAwesomeIcon icon={faClipboardList} className="text-4xl" />
@@ -19,7 +19,7 @@ export default function AllTimeSelling() {
           </div>
         </div>
         
-        <div className="bg-white p-6 rounded-lg shadow-sm">
+        <div className="bg-white p-6 rounded-lg">
           <div className="flex flex-col">
             <div className="mb-4 text-green-400 ml-4">
               <FontAwesomeIcon icon={faUsers} className="text-4xl" />
@@ -33,7 +33,7 @@ export default function AllTimeSelling() {
           </div>
         </div>
         
-        <div className="bg-white p-6 rounded-lg shadow-sm">
+        <div className="bg-white p-6 rounded-lg">
           <div className="flex flex-col">
             <div className="mb-4 text-green-400 ml-4">
               <FontAwesomeIcon icon={faLock} className="text-4xl" />
@@ -47,7 +47,7 @@ export default function AllTimeSelling() {
           </div>
         </div>
         
-        <div className="bg-white p-6 rounded-lg shadow-sm">
+        <div className="bg-white p-6 rounded-lg">
           <div className="flex flex-col">
             <div className="mb-4 text-green-400 ml-4">
               <FontAwesomeIcon icon={faHeadset} className="text-4xl" />

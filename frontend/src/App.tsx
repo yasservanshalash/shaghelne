@@ -11,7 +11,7 @@ import Testimonial2 from './components/section/Testimonial2'
 import InspireingWork20 from './components/section/InspireingWork20'
 import InspiringService11 from './components/section/InspiringService11'
 import CtaBanner21 from './components/section/CtaBanner21'
-
+import Footer from './components/footer/Footer'
 function App() {
   return (
     <Router>
@@ -26,6 +26,7 @@ function App() {
       <InspireingWork20 />
       <InspiringService11 />
       <CtaBanner21 />
+      <Footer />
     </Router>
   )
 }
