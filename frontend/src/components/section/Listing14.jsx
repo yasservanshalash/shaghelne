@@ -1,11 +1,11 @@
-import listingStore from "@/store/listingStore";
-import ListingOption2 from "../element/ListingOption2";
-import ListingSidebar5 from "../sidebar/ListingSidebar5";
+import listingStore from "../../store/listingStore";
+import ListingOption1 from "../element/ListingOption1";
+import ListingSidebarModal1 from "../modal/ListingSidebarModal1";
 import Pagination1 from "./Pagination1";
-import priceStore from "@/store/priceStore";
-import { freelancer1 } from "@/data/product";
-import FreelancerCard2 from "../card/FreelancerCard2";
-import ListingSidebarModal5 from "../modal/ListingSidebarModal5";
+import priceStore from "../../store/priceStore";
+import { freelancer1 } from "../../data/product";
+import FreelancerCard4 from "../card/FreelancerCard4";
+import ListingSidebar5 from "../sidebar/ListingSidebar5";
 
 export default function Listing14() {
   const getCategory = listingStore((state) => state.getCategory);
@@ -60,7 +60,7 @@ export default function Listing14() {
     .filter(sortByFilter)
     .map((item, i) => (
       <div key={i} className="col-sm-6 col-xl-4">
-        <FreelancerCard2 data={item} />
+        <FreelancerCard4 data={item} />
       </div>
     ));
 
@@ -73,7 +73,7 @@ export default function Listing14() {
               <ListingSidebar5 />
             </div>
             <div className="col-lg-9">
-              <ListingOption2 itemLength={content?.length} />
+              <ListingOption1 itemLength={content?.length} />
               <div className="row">
                 {content?.length !== 0 ? content : "Data not found!"}
               </div>
@@ -84,7 +84,7 @@ export default function Listing14() {
           </div>
         </div>
       </section>
-      <ListingSidebarModal5 />
+      <ListingSidebarModal1 />
     </>
   );
 }

@@ -1,5 +1,5 @@
-import priceStore from "@/store/priceStore";
-import ReactSlider from "react-slider";
+import priceStore from "../../store/priceStore";
+import Slider from "../common/Slider";
 
 export default function PriceRange1() {
   const priceRange = priceStore((state) => state.priceRange);
@@ -13,7 +13,7 @@ export default function PriceRange1() {
   return (
     <>
       <div className="price__range__box">
-        <ReactSlider
+        <Slider
           className="horizontal-slider"
           thumbClassName="example-thumb"
           trackClassName="example-track"
@@ -22,6 +22,7 @@ export default function PriceRange1() {
           max={100000}
           onChange={rangeHandler}
           minDistance={10}
+          withBars={true}
         />
       </div>
     </>

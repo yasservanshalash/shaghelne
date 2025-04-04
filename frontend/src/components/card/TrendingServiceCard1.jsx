@@ -1,96 +1,128 @@
-import { Link } from "react-router-dom";
-import { useLocation } from "react-router-dom";
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar, faClock, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 
-import { useState } from "react";
+const TrendingServiceCard1 = ({ service }) => {
+  const navigate = useNavigate();
 
-export default function TrendingServiceCard1({ data }) {
-  const [isFavActive, setFavActive] = useState(false);
+  // Handle click on a service card
+  const handleServiceClick = () => {
+    if (service && service.id) {
+      navigate(`/service-details/${service.id}`);
+    }
+  };
 
-  const { pathname } = useLocation();
+  // If no service data is provided, show a placeholder or loading state
+  if (!service) {
+    return (
+      <div className="bg-white rounded-lg shadow-md p-4 h-72 flex items-center justify-center">
+        <p className="text-gray-500">لا توجد بيانات متاحة</p>
+      </div>
+    );
+  }
+
+  // Calculate random width for the rating bar (for visual interest)
+  const ratingBarWidth = Math.floor(70 + Math.random() * 30); // Between 70-100%
 
   return (
-    <>
-      <div
-        className={`listing-style1 ${
-          pathname === "/home-4" ? "default-box-shadow1 bdrs8" : ""
-        } ${pathname === "/home-6" ? "default-box-shadow1 border-0" : ""}
-                 ${
-                   pathname === "/home-9"
-                     ? "border-0 default-box-shadow1 bdrs16"
-                     : ""
-                 } 
-                ${pathname === "/home-10" ? "bdrs16" : ""}
-                ${pathname === "/home-17" ? "bdrs16" : ""}
-                ${pathname === "/home-15" ? "bdrs16" : ""}
-                ${pathname === "/home-12" ? "bdrs16" : ""}
-                 ${
-                   pathname === "/home-5"
-                     ? "style4 default-box-shadow1 mb60"
-                     : ""
-                 } 
-                 ${
-                   pathname === "/home-18"
-                     ? "style4 default-box-shadow1 mb60"
-                     : ""
-                 } 
-                 ${
-                   pathname === "/home-19"
-                     ? "style4 default-box-shadow1 mb60"
-                     : ""
-                 } 
-                ${pathname === "/home-8" ? "style5" : ""}`}
-      >
-        <div className="list-thumb">
-          <img
-            className="w-100 h-100 object-fit-cover"
-            src={data.img}
-            alt="thumbnail"
-          />
-          <a
-            onClick={() => setFavActive(!isFavActive)}
-            className={`listing-fav fz12 ${isFavActive ? "ui-fav-active" : ""}`}
-          >
-            <span className="far fa-heart" />
-          </a>
+    <div 
+      className="bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-xl hover:translate-y-[-5px]"
+      onClick={handleServiceClick}
+    >
+      {/* Service Image */}
+      <div className="relative">
+        <img 
+          src={service.imageUrl || `https://picsum.photos/seed/${service.id || 'default'}/300/300`} 
+          alt={service.title} 
+          className="w-full h-48 object-cover"
+          onError={(e) => {
+            e.target.onerror = null;
+            e.target.src = `https://picsum.photos/seed/fallback/500/300`;
+          }}
+        />
+        <div className="absolute top-0 left-0 bg-gradient-to-r from-green-600 to-green-500 text-white px-3 py-1 text-xs font-medium rounded-br-lg">
+          {service.category}
         </div>
-        <div className={`list-content ${pathname === "/home-8" ? "px-0" : ""}`}>
-          <p className="list-text body-color fz14 mb-1">{data.category}</p>
-          <h5 className="list-title">
-            <Link to={`/service-single/${data.id}`}>
-              {data.title.slice(0, 40) + "..."}
-            </Link>
-          </h5>
-          <div className="review-meta d-flex align-items-center">
-            <i className="fas fa-star fz10 review-color me-2" />
-            <p className="mb-0 body-color fz14">
-              <span className="dark-color me-2">{data.rating}</span>
-              {data.review} reviews
-            </p>
-          </div>
-          <hr className="my-2" />
-          <div className="list-meta d-flex justify-content-between align-items-center mt15">
-            <a className="d-flex" href="#">
-              <span className="position-relative mr10">
-                <img
-                  className="rounded-circle wa"
-                  src={data.author.img}
-                  alt="Freelancer Photo"
+        <div className="absolute bottom-0 right-0 bg-black bg-opacity-60 text-white px-3 py-1 text-xs rounded-tl-lg flex items-center">
+          <FontAwesomeIcon icon={faClock} className="mr-1" />
+          <span>{service.deliveryTime || '24h'}</span>
+        </div>
+      </div>
+      
+      {/* Service Details */}
+      <div className="p-4" dir="rtl">
+        {/* Title & Description */}
+        <h3 className="font-bold text-gray-800 text-lg mb-2 line-clamp-1 hover:text-green-600 transition-colors">{service.title}</h3>
+        <p className="text-gray-600 text-sm mb-4 line-clamp-2">{service.description}</p>
+        
+        {/* Location */}
+        <div className="flex items-center text-gray-500 mb-3 text-sm">
+          <FontAwesomeIcon icon={faMapMarkerAlt} className="ml-1" />
+          <span>{service.location || 'عن بعد'}</span>
+        </div>
+
+        {/* Ratings */}
+        <div className="mb-4">
+          <div className="flex items-center mb-1">
+            <div className="flex items-center text-yellow-400 mr-2">
+              {[1, 2, 3, 4, 5].map((star) => (
+                <FontAwesomeIcon 
+                  key={star} 
+                  icon={faStar} 
+                  className={`text-sm ${star <= Math.round(service.sellerRating || 0) ? 'text-yellow-400' : 'text-gray-300'}`} 
                 />
-                <span className="online-badges" />
-              </span>
-              <span className="fz14">{data.author.name}</span>
-            </a>
-            <div className="budget">
-              <p className="mb-0 body-color">
-                Starting at
-                <span className="fz17 fw500 dark-color ms-1">
-                  ${data.price}
-                </span>
-              </p>
+              ))}
             </div>
+            <span className="text-sm text-gray-700">{service.sellerRating || 4.5}</span>
+          </div>
+          <div className="h-1 bg-gray-200 rounded-full w-full">
+            <div 
+              className="h-1 bg-yellow-400 rounded-full" 
+              style={{ width: `${ratingBarWidth}%` }}
+            ></div>
+          </div>
+        </div>
+
+        {/* Divider */}
+        <hr className="my-3 border-gray-200" />
+        
+        {/* Seller Info and Price */}
+        <div className="flex items-center justify-between mt-2">
+          {/* Seller */}
+          <div className="flex items-center">
+            <div className="w-10 h-10 bg-gradient-to-br from-green-400 to-green-600 rounded-full overflow-hidden mr-2 flex-shrink-0 border-2 border-white shadow">
+              {service.sellerImgUrl ? (
+                <img 
+                  src={service.sellerImgUrl} 
+                  alt={service.sellerName} 
+                  className="w-full h-full object-cover"
+                  onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.src = `https://picsum.photos/seed/${service.sellerName || 'seller'}/200/200`;
+                  }}
+                />
+              ) : (
+                <div className="w-full h-full flex items-center justify-center text-white font-bold">
+                  {service.sellerName?.charAt(0) || 'م'}
+                </div>
+              )}
+            </div>
+            <div>
+              <div className="text-sm font-medium text-gray-800">{service.sellerName || 'مستقل'}</div>
+              <div className="text-xs text-gray-500">{service.sellerLevel || 'بائع محترف'}</div>
+            </div>
+          </div>
+          
+          {/* Price */}
+          <div className="text-right">
+            <div className="text-xs text-gray-500">تبدأ من</div>
+            <div className="text-green-600 font-bold text-xl">${service.price || 5}</div>
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
-}
+};
+
+export default TrendingServiceCard1;

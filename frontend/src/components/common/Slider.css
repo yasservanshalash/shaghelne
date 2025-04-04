@@ -1,0 +1,55 @@
+/* Custom Slider Styles */
+.custom-slider-wrapper {
+  padding: 10px 0;
+  width: 100%;
+}
+
+/* Customize the slider handle */
+.custom-slider-wrapper .rc-slider-handle {
+  width: 20px;
+  height: 20px;
+  margin-top: -8px;
+  border-width: 2px;
+  opacity: 1;
+  cursor: pointer;
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.custom-slider-wrapper .rc-slider-handle:hover {
+  transform: scale(1.1);
+}
+
+.custom-slider-wrapper .rc-slider-handle:active {
+  box-shadow: 0 0 5px var(--color-primary, #4caf50);
+  transform: scale(1.1);
+}
+
+/* Customize the slider track */
+.custom-slider-wrapper .rc-slider-track {
+  height: 6px;
+  background-color: var(--color-primary, #4caf50);
+  transition: background-color 0.3s ease;
+}
+
+/* Customize the slider rail */
+.custom-slider-wrapper .rc-slider-rail {
+  height: 6px;
+  background-color: var(--color-background-secondary, #e5e5e5);
+}
+
+/* RTL support */
+[dir="rtl"] .custom-slider-wrapper .rc-slider-handle {
+  margin-left: 0;
+  margin-right: -10px;
+}
+
+/* Green theme */
+.theme-green .custom-slider-wrapper .rc-slider-track,
+.theme-green .custom-slider-wrapper .rc-slider-handle {
+  background-color: var(--color-green, #4caf50);
+  border-color: var(--color-green, #4caf50);
+}
+
+.theme-green .custom-slider-wrapper .rc-slider-handle:active {
+  box-shadow: 0 0 5px var(--color-green, #4caf50);
+} 

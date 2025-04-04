@@ -22,7 +22,7 @@ export default function FooterSelect2() {
             </svg>
           </button>
           {moneyDropdownOpen && (
-            <div className="absolute z-10 mt-1 bg-white rounded shadow-lg w-full">
+            <div className="absolute z-10 bottom-full mb-1 bg-white rounded shadow-lg w-full">
               <ul className="py-1">
                 {momney.map((item, index) => (
                   <li
@@ -55,7 +55,7 @@ export default function FooterSelect2() {
             </svg>
           </button>
           {lanDropdownOpen && (
-            <div className="absolute z-10 mt-1 bg-white rounded shadow-lg w-full">
+            <div className="absolute z-10 bottom-full mb-1 bg-white rounded shadow-lg w-full">
               <ul className="py-1">
                 {lan.map((item, index) => (
                   <li

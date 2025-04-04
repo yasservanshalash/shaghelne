@@ -1,10 +1,10 @@
-import { product1 } from "@/data/product";
+import { product1 } from "../../data/product";
 import ListingOption1 from "../element/ListingOption1";
 import ListingSidebarModal1 from "../modal/ListingSidebarModal1";
 import Pagination1 from "./Pagination1";
 import TrendingServiceCard1 from "../card/TrendingServiceCard1";
-import listingStore from "@/store/listingStore";
-import priceStore from "@/store/priceStore";
+import listingStore from "../../store/listingStore";
+import priceStore from "../../store/priceStore";
 import PopularServiceSlideCard1 from "../card/PopularServiceSlideCard1";
 
 export default function Listing1() {

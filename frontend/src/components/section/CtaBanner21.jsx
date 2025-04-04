@@ -5,7 +5,7 @@ import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 export default function CtaBanner21() {
   return (
-    <section className="max-w-[1700px] mx-auto rounded-3xl bg-gradient-to-r from-green-600 to-green-700" dir="rtl">
+    <section className="max-w-[1700px] mx-auto rounded-3xl bg-gradient-to-r from-green-600 to-green-700 mb-14" dir="rtl">
       <div className="container mx-auto px-4 ">
         <div className="flex flex-wrap items-center justify-between">
           <div className="w-full md:w-6/12 lg:w-8/12 animate-fadeInLeft order-2 md:order-1">

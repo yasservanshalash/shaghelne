@@ -12,7 +12,7 @@ export default function Footer() {
   return (
     <>
       <section
-        className={`pt-6 pb-0 bg-green-100 mt-10`}
+        className={`pt-6 pb-0 bg-green-100`}
         dir="rtl"
       >
         <div className="container mx-auto px-4">

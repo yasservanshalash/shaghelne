@@ -1,10 +1,10 @@
-import { bestSeller, deliveryTime, level, location } from "@/data/listing";
-import toggleStore from "@/store/toggleStore";
+import { bestSeller, deliveryTime, level, location } from "../../data/listing";
+import toggleStore from "../../store/toggleStore";
 
-import listingStore from "@/store/listingStore";
+import listingStore from "../../store/listingStore";
 import { useEffect, useState } from "react";
-import priceStore from "@/store/priceStore";
-import ReactSlider from "react-slider";
+import priceStore from "../../store/priceStore";
+import Slider from "../common/Slider";
 import ClearButton from "../button/ClearButton";
 import SortOption1 from "../option/SortOption1";
 import PriceDropdown1 from "../dropdown/PriceDropdown1";
@@ -23,7 +23,8 @@ export default function ListingOption1() {
 
   const priceRange = priceStore((state) => state.priceRange);
   const setPriceRange = priceStore((state) => state.priceRangeHandler);
-  const listingToggle = toggleStore((state) => state.listingToggleHandler);
+  const toggleStoreInstance = toggleStore();
+  const listingToggle = toggleStoreInstance.listingToggleHandler;
   const setOurDeliveryTime = listingStore((state) => state.setDeliveryTime);
   const getDeliveryTime = listingStore((state) => state.getDeliveryTime);
   const setOurLevel = listingStore((state) => state.setLevel);

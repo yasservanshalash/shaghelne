@@ -21,9 +21,9 @@ export default function TrendingServices() {
   };
 
   return (
-    <section className="py-16 md:py-24">
+    <section className="py-16 md:py-24" dir="rtl">
       <div className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row-reverse items-center justify-between mb-10">
+        <div className="flex flex-col md:flex-row items-center justify-between mb-10">
           <div className="mb-6 md:mb-0 text-right">
             <h2 className="text-3xl font-bold mb-2">الخدمات الشائعة</h2>
             <p className="text-gray-600">
@@ -31,7 +31,7 @@ export default function TrendingServices() {
             </p>
           </div>
           <div className="w-full md:w-auto">
-            <div className="flex flex-wrap justify-center md:justify-end mb-6 md:mb-0 flex-row-reverse">
+            <div className="flex flex-wrap justify-center md:justify-start mb-6 md:mb-0">
               {categories.map((item, index) => (
                 <button
                   key={index}
@@ -48,6 +48,7 @@ export default function TrendingServices() {
             </div>
           </div>
         </div>
+
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {product1
             .filter((item) =>

@@ -1,10 +1,10 @@
-import { deliveryTime } from "@/data/listing";
-import toggleStore from "@/store/toggleStore";
+import { deliveryTime } from "../../data/listing";
+import toggleStore from "../../store/toggleStore";
 
-import listingStore from "@/store/listingStore";
+import listingStore from "../../store/listingStore";
 import { useEffect, useState } from "react";
-import priceStore from "@/store/priceStore";
-import ReactSlider from "react-slider";
+import priceStore from "../../store/priceStore";
+import Slider from "../common/Slider";
 import ClearButton from "../button/ClearButton";
 import SortOption1 from "../option/SortOption1";
 
@@ -123,7 +123,7 @@ export default function ListingOption3() {
                       <div className="range-slider-style1">
                         <div className="range-wrapper">
                           <div className="price__range__box">
-                            <ReactSlider
+                            <Slider
                               className="horizontal-slider"
                               thumbClassName="example-thumb"
                               trackClassName="example-track"

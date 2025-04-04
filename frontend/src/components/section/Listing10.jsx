@@ -1,11 +1,11 @@
-import { job1 } from "@/data/job";
-import ListingOption2 from "../element/ListingOption2";
+import { job1 } from "../../data/job";
+import ListingOption3 from "../element/ListingOption3";
 import ListingSidebar3 from "../sidebar/ListingSidebar3";
 import Pagination1 from "./Pagination1";
-import listingStore from "@/store/listingStore";
-import priceStore from "@/store/priceStore";
+import listingStore from "../../store/listingStore";
+import priceStore from "../../store/priceStore";
 import ListingSidebarModal3 from "../modal/ListingSidebarModal3";
-import JobCard5 from "../card/JobCard5";
+import JobCard1 from "../card/JobCard1";
 
 export default function Listing10() {
   const getCategory = listingStore((state) => state.getCategory);
@@ -43,7 +43,7 @@ export default function Listing10() {
     .filter(sortByFilter)
     .map((item, i) => (
       <div key={i} className="col-sm-6 col-xl-12">
-        <JobCard5 data={item} />
+        <JobCard1 data={item} />
       </div>
     ));
 
@@ -56,7 +56,7 @@ export default function Listing10() {
               <ListingSidebar3 />
             </div>
             <div className="col-lg-9">
-              <ListingOption2 itemLength={content?.length} />
+              <ListingOption3 itemLength={content?.length} />
               <div className="row">{content}</div>
               <div className="row mt30">
                 <Pagination1 />

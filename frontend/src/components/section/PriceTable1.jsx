@@ -1,6 +1,6 @@
-import { price1 } from "@/data/project";
+import { price1 } from "../../data/project";
 import PriceTableCard1 from "../card/PriceTableCard1";
-import priceStore from "@/store/priceStore";
+import priceStore from "../../store/priceStore";
 import { useLocation } from "react-router-dom";
 
 export default function PriceTable1() {

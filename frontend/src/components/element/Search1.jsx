@@ -1,4 +1,4 @@
-import listingStore from "@/store/listingStore";
+import listingStore from "../../store/listingStore";
 import { useLocation } from "react-router-dom";
 
 export default function Search1() {

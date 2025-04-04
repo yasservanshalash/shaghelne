@@ -64,10 +64,10 @@ const menus = [
         id: 3,
         name: "Job View",
         children: [
-          { id: 1, name: "Job list v1", path: "/job-1" },
+          { id: 1, name: "Job list", path: "/jobs" },
           { id: 2, name: "Job list v2", path: "/job-2" },
           { id: 3, name: "Job list v3", path: "/job-3" },
-          { id: 4, name: "Job Single", path: "/job-single" },
+          { id: 4, name: "Job Single", path: "/jobs/1" },
         ],
       },
     ],
